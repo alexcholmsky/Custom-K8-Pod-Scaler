@@ -1,11 +1,13 @@
 package main
 
 import (
-    "time"
-    "log"
-    "net/http"
+	"log"
+	"math/rand"
+	"net/http"
+	"time"
+
 	"github.com/prometheus/client_golang/prometheus"
-    "github.com/prometheus/client_golang/prometheus/promhttp"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
 var (
@@ -30,8 +32,11 @@ func main() {
     prometheus.MustRegister(requestDuration)
 
     http.HandleFunc("/", handleRequest)
-    http.Handle("/metrics", promhttp.Handler())
-    log.Fatal(http.ListenAndServe(":8080", nil))
+
+	// Serve the metrics endpoint on the "/metrics" path
+	http.Handle("/metrics", promhttp.Handler())
+
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 
 func handleRequest(w http.ResponseWriter, r *http.Request) {

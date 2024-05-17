@@ -10,7 +10,7 @@ import (
 )
 
 var (
-    endpoint   = flag.String("endpoint", "http://localhost:8080", "Endpoint to send requests to")
+    endpoint   = flag.String("endpoint", "http://my-go-app:8080", "Endpoint to send requests to")
     mode       = flag.String("mode", "http", "Operating mode: 'http' or 'queue'")
     rate       = flag.Int("rate", 10, "Requests per second")
 )

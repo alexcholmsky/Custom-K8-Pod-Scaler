@@ -1,0 +1,16 @@
+global:
+  scrape_interval:     10s # By default, scrape targets every 15 seconds.
+
+  # Attach these labels to any time series or alerts when communicating with
+  # external systems (federation, remote storage, Alertmanager).
+  external_labels:
+    monitor: 'codelab-monitor'
+
+# Endpoint
+scrape_configs:
+  - job_name: 'my-go-app'
+    static_configs:
+      - targets: ['my-go-app:8080']
+
+
+
